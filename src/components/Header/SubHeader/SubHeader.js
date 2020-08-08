@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import cn from "classnames/bind";
 import styles from "./SubHeader.scss";
 import {NavLink} from "react-router-dom";
@@ -14,7 +14,6 @@ const cx = cn.bind(styles);
 const routes = Object.freeze(_.map(consts.MENU, v => v.route));
 
 const checkCurrentRoute = (route, pathname) => {
-	console.log(1111111);
 	if (route === "/") return pathname === "/";
 	else if (_.includes(pathname, route)) return true;
 	else if (_.isEqual(route, "/dashboard") && _.every(routes, v => !_.includes(pathname, v))) return true;
@@ -23,18 +22,19 @@ const checkCurrentRoute = (route, pathname) => {
 
 export default function(props) {
 	const {navBarOpen, setNavBarOpen} = props;
+	const [updateFlag, setUpdateFlag] = useState(false);
 	const history = useHistory();
-
 	const handleClick = useCallback(
 		(e, route) => {
-			if (_.isEqual(window.location.pathname, route)) e.preventDefault();
+			_.isEqual(window.location.pathname, route) ? e.preventDefault() : setUpdateFlag(!updateFlag);
+			// if (_.isEqual(window.location.pathname, route)) e.preventDefault();
 			// if (route === "/dex") {
 			// 	e.preventDefault();
-			// 	window.open(consts.LINK.BINANCEDEX, "_blank");
+			// 	window.open(consts.LINK.HSCHAINDEX, "_blank");
 			// }
 			setNavBarOpen(false);
 		},
-		[setNavBarOpen]
+		[setNavBarOpen, updateFlag]
 	);
 
 	const render = useCallback(

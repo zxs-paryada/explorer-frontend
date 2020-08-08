@@ -2,6 +2,7 @@
 .vscode/
 node_modules/
 build
+build.tar.gz
 .npm/
 template/src/__tests__/__snapshots__/
 

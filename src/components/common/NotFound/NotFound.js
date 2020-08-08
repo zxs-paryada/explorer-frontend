@@ -7,7 +7,7 @@ import {_} from "src/lib/scripts";
 import {useFetch, useSelector} from "src/hooks";
 //  assets
 import notFoundSVG from "src/assets/misc/404_img.svg";
-import binanceHasTxSVG from "src/assets/misc/binanceHasTx.svg";
+import hschainHasTxSVG from "src/assets/misc/hschainHasTx.svg";
 import nextSVG from "src/assets/misc/arrow-next-gr.svg";
 import Loading from "src/components/common/Loading";
 import DisplayLongString from "src/components/common/DisplayLongString";
@@ -21,13 +21,13 @@ const NotFound = ({altText = "Sorry! Page Not Found"}) => {
 	const [route, data] = React.useMemo(() => getRoute(), []);
 	React.useEffect(() => {
 		if (route === "tx") {
-			setUrl(`${accelAPI}${consts.BINANCE_API_ENDPOINTS.TX(data)}`);
+			setUrl(`${accelAPI}${consts.HSCHAIN_API_ENDPOINTS.TX(data)}`);
 		}
 	}, [accelAPI, setUrl, route, data]);
 
 	React.useEffect(() => {
 		if (!_.isNil(state.data?.height) && !state.error) {
-			setAltLink(`https://explorer.binance.org/tx/${data}`);
+			setAltLink(`https://explorer.hschain.org/tx/${data}`);
 		}
 	}, [state, data]);
 
@@ -41,17 +41,17 @@ const NotFound = ({altText = "Sorry! Page Not Found"}) => {
 					<h2>{altText}</h2>
 				</div>
 			) : (
-				<div className={cx("notFound_inBinance-wrapper")}>
-					<img src={binanceHasTxSVG} alt='not found' />
+				<div className={cx("notFound_inHschain-wrapper")}>
+					<img src={hschainHasTxSVG} alt='not found' />
 					<div className={cx("border")}>
 						<p>
 							<DisplayLongString inputString={data} displayThresh={12} medium={true} />
 						</p>
 					</div>
-					<h2>Tx can be found in binance explorer</h2>
+					<h2>Tx can be found in hschain explorer</h2>
 
 					<button onClick={() => window.open(altLink, "__blank")}>
-						<span>BINANCE EXPLORER</span>
+						<span>HSCHAIN EXPLORER</span>
 						<img src={nextSVG} alt='next' />
 					</button>
 				</div>

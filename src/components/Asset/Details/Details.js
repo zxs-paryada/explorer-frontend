@@ -21,7 +21,7 @@ export default function Details({asset}) {
 		if (empty(asset.mediaList)) return;
 		const ret = {};
 		_.each(asset.mediaList, v => {
-			if (v.mediaName !== "Binance Info") ret[v.mediaName] = v.mediaUrl;
+			if (v.mediaName !== "hschain Info") ret[v.mediaName] = v.mediaUrl;
 			else ret.Info = v.mediaUrl;
 		});
 		if (asset.contactEmail !== "@" && asset.contactEmail?.length >= 5) _.assign(ret, {email: asset.contactEmail});
@@ -98,7 +98,7 @@ export default function Details({asset}) {
 // 	"asset": "USDSB-1AC",
 // 	"mappedAsset": "USDSB",
 // 	"name": "USDS",
-// 	"assetImg": "https://static.binance.org/icon/7df5e4de406a4764971244909ae9fcbf",
+// 	"assetImg": "https://static.hschain.org/icon/7df5e4de406a4764971244909ae9fcbf",
 // 	"supply": 90000000000,
 // 	"price": 0.97689466,
 // 	"quoteUnit": "USD",

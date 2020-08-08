@@ -15,7 +15,7 @@ export default function usePreload() {
 		const cancelToken = axios.CancelToken;
 		const source = cancelToken.source();
 		dispatch(getCyptoAcceleratedNode());
-		dispatch(getCryptoBasicData("binancecoin", "usd", source.token));
+		dispatch(getCryptoBasicData("hschaincoin", "usd", source.token));
 		dispatch(getCryptoStatus(source.token));
 		dispatch(getCryptoFees(source.token));
 		dispatch(getCryptoValidators(source.token));
@@ -27,7 +27,7 @@ export default function usePreload() {
 		const interval = setInterval(() => {
 			const cancelToken = axios.CancelToken;
 			const source = cancelToken.source();
-			dispatch(getCryptoBasicData("binancecoin", "usd", source.token));
+			dispatch(getCryptoBasicData("hschaincoin", "usd", source.token));
 
 			//  spacing out the request
 			//  probably won't need a cleanup function because it's never unloaded

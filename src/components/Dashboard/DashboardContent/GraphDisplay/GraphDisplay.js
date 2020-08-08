@@ -29,7 +29,7 @@ export default function(props) {
 		const times = getUnixTimes(TWO_HOURS_IN_MINUTES, "minute", "hour");
 		const cancelToken = axios.CancelToken;
 		const source = cancelToken.source();
-		getMarketChartRange("binancecoin", "usd", times[0], times[1], source.token)
+		getMarketChartRange("hschaincoin", "usd", times[0], times[1], source.token)
 			.then(res => {
 				if (_.isObject(res.data)) {
 					const mapped = _.map(_.initial(_.keys(res.data)), key => _.map(res.data[key], v => [v[0], Math.round(v[1] * 100) / 100]));

@@ -28,11 +28,11 @@ import arrowSVG from "src/assets/transactions/symbol_arrow.svg";
 import transferArrowSVG from "src/assets/transactions/transferArrow.svg";
 import symbolNone from "src/assets/transactions/symbol_none.svg";
 import detailSVG from "src/assets/transactions/symbol_detail_btn.svg";
-import bnbSVG from "src/assets/common/binance_token.svg";
+import bnbSVG from "src/assets/common/hschain_token.svg";
 import DisplayLongString from "src/components/common/DisplayLongString";
 import TxAddressOther from "src/components/Tx/TxData/TxAddressOther";
 
-// const bnbSVG = "https://static.binance.org/icon/8fedcd202fb549d28b2f313b2bf97033";
+// const bnbSVG = "https://static.hschain.org/icon/8fedcd202fb549d28b2f313b2bf97033";
 
 const OrderStatus = Object.freeze({
 	Ack: "Pending",
@@ -425,7 +425,7 @@ const TradeBox = ({symbol, value}) => {
 
 const clickSymbol = symbol => {
 	if (_.isNil(symbol)) return;
-	window.open(`${consts.API_BINANCE_DEX}/${symbol}`);
+	window.open(`${consts.API_HSCHAIN_DEX}/${symbol}`);
 };
 
 const refineFee = input => (_.isString(input) ? input.replace(/(#Cxl:[1-9])|(;)/g, "").split(":") : "");

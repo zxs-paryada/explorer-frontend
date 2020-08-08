@@ -11,18 +11,18 @@ import {Toolbar} from "@material-ui/core";
 import consts from "src/constants/consts";
 
 import dropdownArrow from "src/assets/common/dropdown_arrow.svg";
-import binance from "src/assets/header/chain_ic.svg";
+import hschain from "src/assets/header/chain_ic.svg";
 import iris from "src/assets/header/iris_token.svg";
 import kava from "src/assets/header/kava_token.svg";
 import cosmos from "src/assets/header/atom_token.svg";
-import logo from "src/assets/header/HSTLOGO.png";
+import logo from "src/assets/header/hstlogo.png";
 import hschain_devnet from "src/assets/header/hschain_devnet.png";
 
 const cx = cn.bind(styles);
 
-// const avaliableNetworks = ["cosmos", "iris", "kava", "binance"];
+// const avaliableNetworks = ["cosmos", "iris", "kava", "hschain"];
 const avaliableNetworks = ["hschain"];
-// const tokenImg = [cosmos, iris, kava, binance];
+// const tokenImg = [cosmos, iris, kava, hschain];
 const tokenImg = [hschain_devnet];
 
 export default function(props) {
@@ -63,10 +63,7 @@ export default function(props) {
 								<button className={cx("select-btn")} onClick={() => setOpen(v => !v)}>
 									<div className={cx("curr-net-wrapper")}>
 										<div className={cx("net-icon")} style={{backgroundImage: `url(${tokenImg[0]})`}} />
-										{/* {consts.NETWORK.BINANCE} */}
-										{(() => {
-											console.log(2222222);
-										})()}
+										{/* {consts.NETWORK.HSCHAIN} */}
 										hschain
 									</div>
 									<img className={cx("arrow-icon", {upsideDown: open})} src={dropdownArrow} alt={"none"} />
@@ -81,8 +78,8 @@ export default function(props) {
 														return consts.NETWORK.IRIS;
 													case "kava":
 														return consts.NETWORK.KAVA;
-													case "binance":
-														return consts.NETWORK.BINANCE;
+													case "hschain":
+														return consts.NETWORK.HSCHAIN;
 													case "hschain":
 														return "hschain";
 													default:
@@ -102,8 +99,8 @@ export default function(props) {
 														return consts.NETWORK.IRIS;
 													case "kava":
 														return consts.NETWORK.KAVA;
-													case "binance":
-														return consts.NETWORK.BINANCE;
+													case "hschain":
+														return consts.NETWORK.HSCHAIN;
 													default:
 														return consts.NETWORK.COSMOS;
 												}

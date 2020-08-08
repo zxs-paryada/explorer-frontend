@@ -6,9 +6,10 @@ const api = process.env.NODE_ENV === "production" ? config.API_PROD : config.API
 
 export default Object.freeze({
 	DEFAULT_ARRAY: [],
-	API_BINANCE_DEX: "https://www.binance.org/en/trade",
-	API_BINANCE_ACCELERATED: ["https://dex-asiapacific.binance.org/api/v1", "https://dex-atlantic.binance.org/api/v1", "https://dex-european.binance.org/api/v1"],
-	BINANCE_API_ENDPOINTS: {
+	// API_HSCHAIN_DEX: "https://www.hschain.org/en/trade",
+	// API_HSCHAIN_ACCELERATED: ["https://dex-asiapacific.hschain.org/api/v1", "https://dex-atlantic.hschain.org/api/v1", "https://dex-european.hschain.org/api/v1"],
+	API_HSCHAIN_ACCELERATED: ["https://devnet.hschain.io/v1", "https://devnet.hschain.io/v1", "https://devnet.hschain.io/v1"],
+	HSCHAIN_API_ENDPOINTS: {
 		TX: tx => `/tx/${tx}?format=json`,
 	},
 	// API_COINGECKO: {
@@ -21,8 +22,8 @@ export default Object.freeze({
 		PAGE_SIZE: 20,
 
 		SPARE_PAGE_CNT: 2, //  amount of pages to preload in pagination
-		BINACE_API_ROWS_LIMIT: 1000, //  max rows binance api allows
-		BINANCE_API_PAGES_LIMIT: 100, //  max page binance api allows
+		BINACE_API_ROWS_LIMIT: 1000, //  max rows hschain api allows
+		HSCHAIN_API_PAGES_LIMIT: 100, //  max page hschain api allows
 
 		REAL_TIME_DELAY_MS: 2000, //  real-time refetch interval(for indexedPagination)
 		DASH_REAL_TIME_DELAY_MS: 3000, //  dashboard refetch interval
@@ -61,7 +62,7 @@ export default Object.freeze({
 		COSMOS: "cosmoshub-3",
 		IRIS: "irishub",
 		KAVA: "kava-3",
-		BINANCE: "binance",
+		HSCHAIN: "hschain",
 	},
 	PREFIX: {
 		COSMOS: "cosmos",
@@ -80,8 +81,8 @@ export default Object.freeze({
 		IOS: "https://apple.co/2IAM3Xm",
 		WEB: "https://wallet.cosmostation.io",
 		COSMOSTATION: "https://www.cosmostation.io/",
-		BINANCEDEX: "https://www.binance.org/",
-		COINGECKO_BINANCE: "https://www.coingecko.com/en/coins/binance-coin",
+		HSCHAINDEX: "https://www.hschain.org/",
+		COINGECKO_HSCHAIN: "https://www.coingecko.com/en/coins/hschain-coin",
 	},
 
 	MENU: [
@@ -103,7 +104,7 @@ export default Object.freeze({
 			route: "/assets",
 		},
 		// {
-		// 	display: "BINANCE DEX",
+		// 	display: "HSCHAIN DEX",
 		// 	route: "/dex",
 		// },
 	],

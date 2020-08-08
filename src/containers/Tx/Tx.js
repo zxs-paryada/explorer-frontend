@@ -38,12 +38,14 @@ export default function(props) {
 			console.log("set txData");
 			setTxData(v => ({...v, ...state.data}));
 			//  data has order id
-			if (_.isNil(txData?.fee))
-				setUrl(
-					`${consts.API_BASE}${consts.API.ORDERS}/${
-						state.data.messages[0]?.value?.id ? state.data.messages[0]?.value?.id : state.data.messages[0]?.value?.refid
-					}`
-				);
+			// if (_.isNil(txData?.fee))
+
+			//	注释请求undefined
+			// 	setUrl(
+			// 		`${consts.API_BASE}${consts.API.ORDERS}/${
+			// 			state.data.messages[0]?.value?.id ? state.data.messages[0]?.value?.id : state.data.messages[0]?.value?.refid
+			// 		}`
+			// 	);
 		}
 	}, [setUrl, state.data, txData, txHash]);
 

@@ -18,7 +18,7 @@ export default function() {
 				<div className={cx("wrapper")}>
 					<div className={cx("title-wrapper")}>
 						{/* <h1 className={cx("title")}>
-							BINANCE CHAIN <span>EXPLORER</span>
+							HSCHAIN CHAIN <span>EXPLORER</span>
 						</h1>
 						<p className={cx("byCosmostation")}>By Cosmostation</p> */}
 					</div>

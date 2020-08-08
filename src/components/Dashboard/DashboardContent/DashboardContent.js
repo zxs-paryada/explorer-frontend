@@ -5,6 +5,7 @@ import {_} from "src/lib/scripts";
 //  components
 import GraphDisplay from "./GraphDisplay";
 import PriceDisplay from "./PriceDisplay";
+import CardDisplay from "./CardDisplay";
 import BlocksDisplay from "./BlocksDisplay";
 import TxDisplay from "./TxDisplay";
 //  assets
@@ -20,17 +21,17 @@ const cardData = Object.freeze([
 		svg: exchangeSVG,
 		title: "Exchange",
 		content: "Blockchain and crypto asset exchange",
-		link: "https://www.binance.org/en/trade",
+		link: "https://www.hschain.org/en/trade",
 	},
 	{
 		svg: dexSVG,
-		title: "Binance DEX",
+		title: "hschain DEX",
 		content: "decentralized digital asset exchange",
-		link: "https://www.binance.org/",
+		link: "https://www.hschain.org/",
 	},
 	{
 		svg: jexSVG,
-		title: "Binance JEX",
+		title: "hschain JEX",
 		content: "Bitcoin futures & Crypto options",
 		link: "https://www.jex.com/",
 	},
@@ -38,21 +39,20 @@ const cardData = Object.freeze([
 		svg: launchpadSVG,
 		title: "Launchpad",
 		content: "Token launch platform",
-		link: "https://launchpad.binance.com/",
+		link: "https://launchpad.hschain.com/",
 	},
 ]);
 
 export default function(props) {
 	return (
 		<div className={cx("DashboardContent-wrapper")}>
-			<div className={cx("PriceGraphClickable-wrapper")}>
-				<div className={cx("Card", "PriceGraph-wrapper")}>
+			{/* <div className={cx("PriceGraphClickable-wrapper")}> */}
+			{/* <div className={cx("Card", "PriceGraph-wrapper")}>
 					<PriceDisplay />
 					<GraphDisplay />
 					<LinkCardInside />
-				</div>
-				{/* <LinkCard /> */}
-			</div>
+				</div> */}
+			<CardDisplay></CardDisplay>
 			<div className={cx("BlockTx-wrapper")}>
 				<BlocksDisplay />
 				<div className={cx("CardFixed")}>

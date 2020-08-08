@@ -19,7 +19,7 @@ export const getBasicData = (id, currency, cancelToken) => {
 };
 
 export const getMarketChartRange = (id, currency, from, to, cancelToken) => {
-	// return axios.get(`${coinGeckoAPI}/coins/binancecoin/market_chart/range?id=${id}&vs_currency=${currency}&from=${from}&to=${to}`, {cancelToken});
+	// return axios.get(`${coinGeckoAPI}/coins/hschaincoin/market_chart/range?id=${id}&vs_currency=${currency}&from=${from}&to=${to}`, {cancelToken});
 	return axios.get(`${consts.API_BASE}/market/chart?id=${id}`, {cancelToken});
 };
 
@@ -49,6 +49,6 @@ export const getFastestNode = (apiArr = []) => {
 };
 
 //  original api using coingecko
-// export const getGeckoMarketChartRange = (id = "binancecoin", currency = "USD", from, to, cancelToken) => {
+// export const getGeckoMarketChartRange = (id = "hschaincoin", currency = "USD", from, to, cancelToken) => {
 // 	return axios.get(`${consts.API_COINGECKO.BASE}${consts.API_COINGECKO.GET_MARKET_CHART_RANGE(id, from, to)}`, {cancelToken});
 // };

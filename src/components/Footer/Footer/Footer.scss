@@ -4,7 +4,7 @@
 .footerWrapper {
 	width: 100%;
 	height: var(--heightFooter);
-	background: linear-gradient(132deg, #171207 0%, #092035 100%);
+	background: #020e46;
 	overflow-x: hidden;
 
 	@include media("<medium") {

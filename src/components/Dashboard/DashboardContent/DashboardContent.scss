@@ -5,6 +5,56 @@
 	margin: 15px auto 70px;
 	$linkWrapperHeight: 288px;
 
+	.card-wrapper {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-gap: 10px;
+		.card-template {
+			min-height: calc(100% - 12px);
+			padding: 15px 20px;
+			border-radius: 5px;
+			background-color: #fff;
+			box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+			margin-bottom: 12px;
+			.card__status {
+				display: flex;
+				font-family: Montserrat;
+				height: 70px;
+				.title-wrapper {
+					flex: 1 1;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					.title {
+						font-size: var(--fontSizeMain);
+						line-height: var(--lineHeightDefault);
+						color: var(--colorDashStatusTitle);
+					}
+					.value {
+						font-size: var(--fontSizeCardValue);
+						color: var(--colorMainText);
+						font-weight: 500;
+						line-height: 1.2;
+					}
+				}
+				.content-wrapper {
+					flex: 1 1;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: flex-end;
+					.value {
+						font-size: var(--fontSizeMain);
+						font-weight: 500;
+						color: var(--colorDashStatusTitle);
+						align-items: center;
+						display: flex;
+					}
+				}
+			}
+		}
+	}
+
 	.PriceGraphClickable-wrapper {
 		display: grid;
 

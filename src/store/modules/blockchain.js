@@ -15,7 +15,7 @@ const [GET_BASIC_DATA, GET_STATUS, GET_ASSETS, GET_FEES, GET_VALIDATORS, GET_FAS
 	"GET_FASTEST_NODE",
 ];
 
-export const getCyptoAcceleratedNode = createAction(GET_FASTEST_NODE, () => api.getFastestNode(consts.API_BINANCE_ACCELERATED));
+export const getCyptoAcceleratedNode = createAction(GET_FASTEST_NODE, () => api.getFastestNode(consts.API_HSCHAIN_ACCELERATED));
 export const getCryptoBasicData = createAction(GET_BASIC_DATA, (id, currency, cancelToken) => api.getBasicData(id, currency, cancelToken));
 export const getCryptoStatus = createAction(GET_STATUS, cancelToken => api.getStatus(cancelToken));
 export const getCryptoFees = createAction(GET_FEES, cancelToken => api.getFees(cancelToken));
@@ -23,7 +23,7 @@ export const getCryptoValidators = createAction(GET_VALIDATORS, cancelToken => a
 
 const initState = {
 	status: {
-		id: "binancecoin",
+		id: "hschaincoin",
 		currency: "",
 		price: null,
 		market_cap: null,
@@ -32,7 +32,7 @@ const initState = {
 		last_updated_at: null,
 		blockTime: null,
 	},
-	acceleratedNode: consts.API_BINANCE_ACCELERATED[0],
+	acceleratedNode: consts.API_HSCHAIN_ACCELERATED[0],
 	validators: [],
 	fees: [],
 	txFees: [],
