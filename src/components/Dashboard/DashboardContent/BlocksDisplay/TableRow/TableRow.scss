@@ -33,7 +33,7 @@ $customPadding: 8px 20px 7px 10px;
 		color: #4b525d;
 	}
 
-	.proposer {
+	.blockHash {
 		@include media("<dash_table_limit") {
 			display: none;
 		}

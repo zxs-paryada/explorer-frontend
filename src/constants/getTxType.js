@@ -4,7 +4,6 @@ const {COSMOS, DEX, TOKENS, MISC} = txTypes;
 
 export default function(txType) {
 	switch (txType) {
-		case DEX.ORDER_NEW:
 		case "NEW_ORDER":
 			return "Place Order";
 

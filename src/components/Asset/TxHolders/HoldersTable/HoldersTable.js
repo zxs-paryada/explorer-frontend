@@ -63,7 +63,7 @@ const tableHeaderRender = (
 			<TableCell className={cx("tableHeaderCell", "rank")} align='center'>
 				Rank
 			</TableCell>
-			<TableCell className={cx("tableHeaderCell", "proposer")} align='left'>
+			<TableCell className={cx("tableHeaderCell", "blockHash")} align='left'>
 				Address
 			</TableCell>
 			<TableCell className={cx("tableHeaderCell")} align='right'>

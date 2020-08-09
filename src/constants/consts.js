@@ -59,15 +59,11 @@ export default Object.freeze({
 		VALIDATORS: "/validators",
 	},
 	NETWORK: {
-		COSMOS: "cosmoshub-3",
-		IRIS: "irishub",
-		KAVA: "kava-3",
+
 		HSCHAIN: "hschain",
 	},
 	PREFIX: {
-		COSMOS: "cosmos",
-		IRIS: "iris",
-		KAVA: "kava",
+		HSCHAIN: "hsc",
 	},
 
 	MINTSCAN_URL: {
@@ -103,9 +99,5 @@ export default Object.freeze({
 			display: "ASSETS",
 			route: "/assets",
 		},
-		// {
-		// 	display: "HSCHAIN DEX",
-		// 	route: "/dex",
-		// },
 	],
 });

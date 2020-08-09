@@ -28,8 +28,8 @@ export default function(props) {
 					<TableCell className={cx("tableHeaderCell", "heightWidth")} align='left'>
 						<span>Height</span>
 					</TableCell>
-					<TableCell className={cx("tableHeaderCell", "proposer")} align='left'>
-						Proposer
+					<TableCell className={cx("tableHeaderCell", "blockHash")} align='left'>
+						Block hash
 					</TableCell>
 					<TableCell className={cx("tableHeaderCell")} align='right'>
 						Txs

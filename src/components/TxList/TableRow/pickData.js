@@ -22,12 +22,12 @@ export default function(blockData, cx, cell) {
 			if (!_.isNil(blockData.tx_hash))
 				return (
 					<NavLink className={cx("blueColor")} to={`/txs/${blockData.tx_hash}`}>
-						{reduceString(blockData.tx_hash, 6, 6)}
+						{reduceString(blockData.tx_hash, 8, 8)}
 					</NavLink>
 				);
 			return <Skeleton />;
 		case "Type":
-			if (!_.isNil(blockData?.messages?.[0]?.type)) return <span className={cx("type")}>{getTxType(blockData?.messages?.[0]?.type)}</span>;
+			if (!_.isNil(blockData?.messages?.[0]?.events?.[0]?.type)) return <span className={cx("type")}>{getTxType(blockData?.messages?.[0]?.events?.[0]?.type)}</span>;
 			return <Skeleton />;
 		case "From": {
 			// TODO

@@ -7,7 +7,8 @@ import {useSelector} from "react-redux";
 //  components
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
-import {setAgoTime} from "src/lib/scripts";
+import {setAgoTime, reduceString} from "src/lib/scripts";
+
 
 const cx = cn.bind(styles);
 
@@ -24,10 +25,10 @@ export default function({blockData}) {
 					<Skeleton />
 				)}
 			</TableCell>
-			<TableCell className={cx("tablePointerCell", "text", "proposer")} align='left'>
-				{blockData.moniker ? (
-					<NavLink className={cx("blueColor")} to={`/account/${validators[blockData.moniker]?.accountAddr}`}>
-						{blockData.moniker}
+			<TableCell className={cx("tablePointerCell", "text", "blockHash")} align='left'>
+				{blockData.block_hash ? (
+					<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
+						{reduceString(blockData.block_hash, 8, 8)}
 					</NavLink>
 				) : (
 					<Skeleton />

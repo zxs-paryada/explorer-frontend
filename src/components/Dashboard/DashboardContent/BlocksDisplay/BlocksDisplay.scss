@@ -15,7 +15,7 @@
 		min-width: 50px;
 	}
 
-	.proposer {
+	.blockHash {
 		min-width: 70px;
 		@include media("<dash_table_limit") {
 			display: none;
