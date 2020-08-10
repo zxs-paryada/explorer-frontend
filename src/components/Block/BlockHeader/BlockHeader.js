@@ -30,8 +30,8 @@ export default function({blockData, history}) {
 							{blockData?.parent_hash}
 						</span>
 					</InfoRow>
-					<InfoRow label={"Number of Tx"}>{blockData?.txs.length}</InfoRow>
-					<InfoRow label={"Node"}>{blockData?.moniker}</InfoRow>
+					<InfoRow label={"Number of Tx"}>{blockData?.num_txs}</InfoRow>
+					{/*<InfoRow label={"Node"}>{blockData?.moniker}</InfoRow>*/}
 					{/*<InfoRow label={"Block Time"}>*/}
 					{/*	<span className={cx("no-transform")}>in 438 ms</span>*/}
 					{/*</InfoRow>*/}

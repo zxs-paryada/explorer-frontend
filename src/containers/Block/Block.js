@@ -19,11 +19,11 @@ import BlockTxs from "src/components/Block/BlockTxs";
 
 const cx = cn.bind(styles);
 
-const baseURL = `${consts.API_BASE}${consts.API.BLOCKLIST}?&limit=1`;
+const baseURL = `${consts.API_BASE}${consts.API.BLOCKLIST}`;
 export default function(props) {
 	const {history} = props;
 	const height = Number(props.match.params.height);
-	const [state, , setUrl] = useFetch(`${baseURL}&before=${Number(height) + 1}`);
+	const [state, , setUrl] = useFetch(`${baseURL}/${height}`);
 	const queriedHeight = state.data?.data?.[0]?.height;
 	const [after, setAfter] = React.useState(false);
 
