@@ -32,8 +32,8 @@ export const TableRowThin = ({blockData}) => {
 					<li key={1}>Parent Hash</li>
 					<li key={2}>
 						{blockData.parent_hash ? (
-							<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
-								{reduceString(blockData.parent_hash, 6, 6)}
+							<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height - 1}`}>
+								{reduceString(blockData.parent_hash, 8, 8)}
 							</NavLink>
 						) : (
 							<Skeleton />
@@ -41,10 +41,8 @@ export const TableRowThin = ({blockData}) => {
 					</li>
 				</ul>
 				<ul className={cx("row")}>
-					<li key={1}>Node</li>
-					<li key={2}>
-						{blockData.moniker ? <NavLink to={`/account/${validators[blockData.moniker].accountAddr}`}>{blockData.moniker}</NavLink> : <Skeleton />}
-					</li>
+					<li key={1}>Block hash</li>
+					<li key={2}>{blockData.height ? <NavLink to={`/blocks/${blockData.height}`}>{reduceString(blockData.block_hash, 8, 8)}</NavLink> : <Skeleton />}</li>
 				</ul>
 				<ul className={cx("row")}>
 					<li key={1}>Txs</li>
@@ -74,16 +72,16 @@ export default function({blockData}) {
 			</TableCell>
 			<TableCell className={cx("tablePointerCell", "text", "parentHashWidth")}>
 				{blockData.parent_hash ? (
-					<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height}`}>
-						{reduceString(blockData.parent_hash, 6, 6)}
+					<NavLink className={cx("blueColor")} to={`/blocks/${blockData.height - 1}`}>
+						{reduceString(blockData.parent_hash, 8, 8)}
 					</NavLink>
 				) : (
 					<Skeleton />
 				)}
 			</TableCell>
-			{/* <TableCell className={cx("tablePointerCell", "text")} align='left'>
-				{blockData.moniker ? <NavLink to={`/account/${validators[blockData.moniker].accountAddr}`}>{blockData.moniker}</NavLink> : <Skeleton />}
-			</TableCell> */}
+			<TableCell className={cx("tablePointerCell", "text")} align='left'>
+				{blockData.height ? <NavLink to={`/blocks/${blockData.height}`}>{reduceString(blockData.block_hash, 8, 8)}</NavLink> : <Skeleton />}
+			</TableCell>
 			<TableCell className={cx("tableCell")} align='right'>
 				{blockData.height ? blockData.num_txs ? blockData.num_txs : "0" : <Skeleton />}
 			</TableCell>
