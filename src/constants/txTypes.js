@@ -1,7 +1,7 @@
 export default Object.freeze({
-	//  COSMOS
-	COSMOS: {
-		SEND: "cosmos-sdk/Send",
+	//  HSCHAIN
+	HSCHAIN: {
+		SEND: "send",
 		PROPOSAL_SUBMIT: "cosmos-sdk/MsgSubmitProposal",
 		DEPOSIT: "cosmos-sdk/MsgDeposit",
 		VOTE: "cosmos-sdk/MsgVote",

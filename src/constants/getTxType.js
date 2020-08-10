@@ -1,6 +1,6 @@
 import txTypes from "src/constants/txTypes";
 
-const {COSMOS, DEX, TOKENS, MISC} = txTypes;
+const {HSCHAIN, DEX, TOKENS, MISC} = txTypes;
 
 export default function(txType) {
 	switch (txType) {
@@ -12,7 +12,7 @@ export default function(txType) {
 			return "Cancel Order";
 
 		case "TRANSFER":
-		case COSMOS.SEND:
+		case HSCHAIN.SEND:
 			return "Transfer";
 
 		case "LIST_TOKEN":
@@ -55,19 +55,19 @@ export default function(txType) {
 		case TOKENS.HTLT_REFUND:
 			return "Refund Swap";
 
-		case COSMOS.DEPOSIT:
+		case HSCHAIN.DEPOSIT:
 			return "Deposit";
 		case "PROPOSAL":
-		case COSMOS.PROPOSAL_SUBMIT:
+		case HSCHAIN.PROPOSAL_SUBMIT:
 			return "Proposal Submit";
-		case COSMOS.VALIDATOR_PROPOSAL:
+		case HSCHAIN.VALIDATOR_PROPOSAL:
 			return "Validator Proposal";
 		case "VOTE":
-		case COSMOS.VOTE:
+		case HSCHAIN.VOTE:
 			return "Vote";
-		case COSMOS.VALIDATOR_CREATE:
+		case HSCHAIN.VALIDATOR_CREATE:
 			return "Validator Create";
-		case COSMOS.VALIDATOR_REMOVE:
+		case HSCHAIN.VALIDATOR_REMOVE:
 			return "Validator Remove";
 
 		case MISC.ACCOUNTFLAG_SET:

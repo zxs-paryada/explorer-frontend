@@ -27,15 +27,15 @@ export default function(blockData, cx, cell) {
 				);
 			return <Skeleton />;
 		case "Type":
-			if (!_.isNil(blockData?.messages?.[0]?.events?.[0]?.type)) return <span className={cx("type")}>{getTxType(blockData?.messages?.[0]?.events?.[0]?.type)}</span>;
+			if (!_.isNil(blockData.action)) return <span className={cx("type")}>{getTxType(blockData.action)}</span>;
 			return <Skeleton />;
 		case "From": {
 			// TODO
 			//  pretty much divide all the cases
 			if (_.isNil(blockData?.messages)) return <Skeleton />;
 			let address;
-			if (!_.isNil(blockData?.messages?.[0]?.value?.sender)) address = `${blockData?.messages?.[0]?.value?.sender}`;
-			else if (blockData?.messages?.[0]?.type === txTypes.COSMOS.SEND) address = `${blockData?.messages?.[0]?.value?.inputs?.[0]?.address}`;
+			if (!_.isNil(blockData?.messages?.[0]?.events?.[0]?.attributes?.sender)) address = `${blockData?.messages?.[0]?.events?.[0]?.attributes?.sender}`;
+			else if (blockData?.messages?.[0]?.events?.[0]?.attributes?.action === txTypes.HSCHAIN.SEND) address = `${blockData?.messages?.[0]?.value?.inputs?.[0]?.address}`;
 			else if (txCheckHTLT(blockData?.messages?.[0]?.type)) address = blockData?.messages[0]?.value?.to;
 			else if (blockData?.messages?.[0]?.type === txTypes.TOKENS.HTLT_CLAIM || blockData?.messages?.[0]?.type === txTypes.TOKENS.HTLT_REFUND)
 				address = blockData?.messages[0]?.value?.from;
@@ -43,7 +43,7 @@ export default function(blockData, cx, cell) {
 			if (_.isString(address))
 				return (
 					<NavLink
-						className={cx("blueColor", blockData?.messages?.[0]?.type === txTypes.COSMOS.SEND ? "address" : undefined)}
+						className={cx("blueColor", blockData?.messages?.[0]?.type === txTypes.HSCHAIN.SEND ? "address" : undefined)}
 						to={`/account/${refineAddress(address)}`}>
 						<span>{reduceString(refineAddress(address), 6, 6)}</span>
 					</NavLink>
@@ -53,14 +53,15 @@ export default function(blockData, cx, cell) {
 		case "To": {
 			// TODO
 			//  pretty much divide all the cases
-			if (blockData?.messages?.[0]?.type !== txTypes.COSMOS.SEND) return "";
+			if (blockData?.messages?.[0]?.events?.[0]?.attributes?.action !== txTypes.HSCHAIN.SEND) return "";
 			if (blockData?.messages?.[0]?.value?.outputs.length > 1) return <span>Multiple Address</span>;
-			const address = `${blockData?.messages?.[0]?.value?.outputs?.[0]?.address}`;
+			const address = `${blockData?.messages?.[0]?.events?.[1]?.attributes?.recipient}`;
+			console.log("addr is :"+address)
 			return (
 				<>
 					<SvgDisplay svgSrc={greenArrowSVG} customClass={"upsideDown"} />
 					<NavLink
-						className={cx("blueColor", blockData?.messages?.[0]?.type === txTypes.COSMOS.SEND ? "address" : undefined)}
+						className={cx("blueColor", blockData?.messages?.[0]?.events?.[0]?.type === txTypes.HSCHAIN.SEND ? "address" : undefined)}
 						to={`/account/${refineAddress(address)}`}>
 						<span>{reduceString(refineAddress(address), 6, 6)}</span>
 					</NavLink>
@@ -69,12 +70,12 @@ export default function(blockData, cx, cell) {
 		}
 		case "Value": {
 			let amount;
-			if (!_.isNil(blockData?.messages?.[0].type)) {
-				const type = blockData?.messages?.[0].type;
+			if (!_.isNil( blockData?.messages?.[0]?.events?.[0]?.attributes?.action)) {
+				const type = blockData?.messages?.[0]?.events?.[0]?.attributes?.action;
 
 				if (type === txTypes.DEX.ORDER_NEW)
 					amount = Big.multiply(Big.divide(blockData.messages[0]?.value?.price, BASE_MULT), Big.divide(blockData.messages[0]?.value?.quantity, BASE_MULT));
-				else if (type === txTypes.COSMOS.SEND) amount = Big.divide(blockData.messages[0]?.value?.outputs?.[0]?.coins?.[0]?.amount, BASE_MULT);
+				else if (type === txTypes.HSCHAIN.SEND) amount = blockData.messages[0]?.events?.[1]?.attributes?.amount;
 				else if (type === txTypes.TOKENS.HTLT) amount = Big.divide(blockData.messages[0]?.value?.amount?.[0]?.amount, BASE_MULT);
 			}
 			if (!_.isNil(amount)) {
@@ -89,17 +90,17 @@ export default function(blockData, cx, cell) {
 		}
 		case "Denom": {
 			let ret = "";
-			const type = blockData?.messages?.[0].type;
+			const type = blockData?.messages?.[0]?.events?.[0]?.attributes?.action;
 			if (!_.isNil(type)) {
 				if (type === txTypes.DEX.ORDER_NEW) {
 					const symbol = blockData?.messages?.[0]?.value?.symbol;
 					if (_.isString(symbol)) ret = symbol.split("_")[1];
-				} else if (type === txTypes.COSMOS.SEND) {
-					ret = blockData?.messages?.[0]?.value?.inputs?.[0]?.coins?.[0]?.denom;
+				} else if (type === txTypes.HSCHAIN.SEND) {
+					ret =  blockData.messages[0]?.events?.[1]?.attributes?.denom;
 				} else if (type === txTypes.TOKENS.HTLT) ret = blockData.messages[0]?.value?.amount?.[0]?.denom;
 			}
 			if (!empty(ret)) {
-				if (ret === "BNB") return <span className={cx("BNB")}>BNB</span>;
+				if (ret === "HST") return <span className={cx("HST")}>HST</span>;
 				return <span className={cx("currency")}>{ret}</span>;
 			}
 			return "-";
