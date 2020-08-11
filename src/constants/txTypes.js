@@ -5,7 +5,7 @@ export default Object.freeze({
 		PROPOSAL_SUBMIT: "cosmos-sdk/MsgSubmitProposal",
 		DEPOSIT: "cosmos-sdk/MsgDeposit",
 		VOTE: "cosmos-sdk/MsgVote",
-		VALIDATOR_CREATE: "cosmos-sdk/MsgCreateValidator",
+		VALIDATOR_CREATE: "create_validator",
 		VALIDATOR_REMOVE: "cosmos-sdk/MsgRemoveValidator",
 		VALIDATOR_PROPOSAL: "cosmos-sdk/MsgCreateValidatorProposal",
 	},
